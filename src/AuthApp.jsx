@@ -1,9 +1,12 @@
 import React from 'react'
+import NetflixApp from './components/NetflixApp'
 
 export default function AuthApp() {
   return (
     <div>
-      <span>AuthApp</span>
+      <span>
+        <NetflixApp />
+      </span>
     </div>
   )
 }

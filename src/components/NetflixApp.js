@@ -1,64 +1,39 @@
 import React from 'react'
-import {NetflixAppBar} from './NetflixAppBar'
-import {NetflixRow} from './NetflixRow'
-import {NetFlixFooter} from './NetFlixFooter'
-import {NetflixHeader} from './NetflixHeader'
-import {getRandomType, getRandomId} from '../utils/helper'
-import {useMovie} from '../utils/hooksMovies'
+import NetflixRow from './NetflixRow'
+import {TYPE_TV, TYPE_MOVIE} from '../config'
+import './row.css'
 
-import {TYPE_MOVIE, TYPE_TV} from '../config'
-import './Netflix.css'
-
-const NetflixApp = ({logout}) => {
-  const [type] = React.useState(getRandomType())
-  const [defaultMovieId] = React.useState(getRandomId(type))
-  const headerMovie = useMovie(type, defaultMovieId)
+export default function NetflixApp() {
   return (
     <div>
-      <NetflixAppBar logout={logout} />
-      <NetflixHeader movie={headerMovie} type={type} />
       <NetflixRow
-        wideImage={true}
-        watermark={true}
+        icone={false}
         type={TYPE_MOVIE}
-        filter="trending"
-        title="Films Netflix"
-      />
-      <NetflixRow
         wideImage={false}
-        watermark={true}
-        type={TYPE_TV}
-        filter="trending"
-        title="Séries Netflix"
+        title={'Les plus populaires'}
+        sort="popular"
       />
-
       <NetflixRow
+        icone={true}
         type={TYPE_MOVIE}
-        filter="toprated"
-        title="Les mieux notés"
-        watermark={true}
         wideImage={true}
+        title={'Films Les mieux notés'}
+        sort="top_rated"
       />
-
       <NetflixRow
-        type={TYPE_TV}
-        filter="genre"
-        param="10759"
-        title="Action & aventure"
-        watermark={true}
-        wideImage={true}
-      />
-
-      <NetflixRow
+        icone={true}
         type={TYPE_MOVIE}
-        filter="genre"
-        param="53"
-        title="Les meilleurs Thriller"
-        watermark={false}
-        wideImage={false}
+        wideImage={true}
+        title={'Sortie prochainement...'}
+        sort="upcoming"
       />
-      <NetFlixFooter color="secondary" si />
+      <NetflixRow
+        icone={true}
+        type={TYPE_MOVIE}
+        wideImage={true}
+        title={'top 10 des films'}
+        sort="now_playing"
+      />
     </div>
   )
 }
-export {NetflixApp}
