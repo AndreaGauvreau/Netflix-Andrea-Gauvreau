@@ -1,4 +1,4 @@
-import {imageListItemClasses} from '@mui/material'
+import {IconButton, imageListItemClasses, Typography} from '@mui/material'
 import axios from 'axios'
 import React from 'react'
 import {useEffect} from 'react'
@@ -9,6 +9,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import AddIcon from '@mui/icons-material/Add'
 import ThumbUpIcon from '@mui/icons-material/ThumbUp'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import StarIcon from '@mui/icons-material/Star'
 
 export default function NetflixRow({icone, type, wideImage, title, sort}) {
   const icones = icone ? 'add_icone' : ''
@@ -23,25 +24,38 @@ export default function NetflixRow({icone, type, wideImage, title, sort}) {
       .then(res => setData(res))
       .catch(error => console.log(error))
   }, [id, type])
-  const image = e => `${imagePath400}/${e.backdrop_path}`
+  const wideImages = a => (wideImage ? a.backdrop_path : a.poster_path)
+  const image = e => `${imagePath400}/${wideImages(e)}`
+  const toolbox = wideImage ? 'toolbox' : 'delete-toolbox'
 
   return (
     <div>
-      {title}
+      <Typography variant="h2">{title}</Typography>
       <div id="row_data">
         {data?.data.results.map((e, index) => (
           <div className={icones} key={index} id="maindivrow">
             <img src={image(e)} />
-            <div className="toolbox">
-              <div>{e.original_title}</div>
-              <div className="icons_set">
-                <PlayArrowIcon />
-                <AddIcon />
-                <ThumbUpIcon />
-                <KeyboardArrowDownIcon />
+            <div className={toolbox}>
+              <div className="topinfos">
+                {e.original_title}
+                <span>
+                  {e.vote_average} <StarIcon color="red" />
+                </span>
               </div>
-              {e.vote_average}
-              {e.release_date}
+              <div className="icons_set">
+                <IconButton>
+                  <PlayArrowIcon />
+                </IconButton>
+                <IconButton>
+                  <AddIcon />
+                </IconButton>
+                <IconButton>
+                  <ThumbUpIcon />
+                </IconButton>
+                <IconButton>
+                  <KeyboardArrowDownIcon />
+                </IconButton>
+              </div>
             </div>
           </div>
         ))}

@@ -5,7 +5,6 @@ import UnauthApp from './UnauthApp'
 function App() {
   return (
     <div className="App">
-      <UnauthApp />
       <AuthApp />
     </div>
   )

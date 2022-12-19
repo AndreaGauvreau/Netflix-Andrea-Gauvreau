@@ -2,17 +2,23 @@ import React from 'react'
 import NetflixRow from './NetflixRow'
 import {TYPE_TV, TYPE_MOVIE} from '../config'
 import './row.css'
+import NetflixAppBar from './NetflixAppBar'
+import NetflixHeader from './NetflixHeader'
 
 export default function NetflixApp() {
   return (
     <div>
-      <NetflixRow
-        icone={false}
-        type={TYPE_MOVIE}
-        wideImage={false}
-        title={'Les plus populaires'}
-        sort="popular"
-      />
+      <NetflixAppBar />
+      <NetflixHeader />
+      <div id="first_row">
+        <NetflixRow
+          icone={false}
+          type={TYPE_MOVIE}
+          wideImage={false}
+          title={'Les plus populaires'}
+          sort="popular"
+        />
+      </div>
       <NetflixRow
         icone={true}
         type={TYPE_MOVIE}
@@ -30,7 +36,7 @@ export default function NetflixApp() {
       <NetflixRow
         icone={true}
         type={TYPE_MOVIE}
-        wideImage={true}
+        wideImage={false}
         title={'top 10 des films'}
         sort="now_playing"
       />
