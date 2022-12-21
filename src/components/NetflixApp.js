@@ -7,12 +7,14 @@ import NetflixHeader from './NetflixHeader'
 import {useState} from 'react'
 import {useEffect} from 'react'
 import {ResetTvRounded, WindowSharp} from '@mui/icons-material'
+import {HeaderSkeleton} from './skeletons/HeaderSkeleton'
 
 export default function NetflixApp() {
   return (
     <div>
       <NetflixAppBar />
       <NetflixHeader />
+      <HeaderSkeleton />
       <div id="first_row">
         <NetflixRow
           icone={false}

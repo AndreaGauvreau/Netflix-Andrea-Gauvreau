@@ -14,7 +14,7 @@ import StarIcon from '@mui/icons-material/Star'
 export default function NetflixRow({icone, type, wideImage, title, sort}) {
   const icones = icone ? 'add_icone' : ''
   const [data, setData] = useState()
-  const id = 550
+  const id = 76600
   const lang = 'fr-FR'
   useEffect(() => {
     axios
@@ -22,6 +22,7 @@ export default function NetflixRow({icone, type, wideImage, title, sort}) {
         `https://api.themoviedb.org/3/${type}/${sort}?api_key=${apiKey}&language=${lang}&page=1`,
       )
       .then(res => setData(res))
+      .then(console.log(data))
       .catch(error => console.log(error))
   }, [id, type])
   const wideImages = a => (wideImage ? a.backdrop_path : a.poster_path)

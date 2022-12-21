@@ -58,6 +58,8 @@ export default function NetflixAppBar() {
     background: 'transparent',
     boxShadow: 'none',
     transition: '0.3s ease',
+    position: 'fixed',
+    zIndex: '10',
   })
   useEffect(() => {
     const onScroll = e => {
@@ -66,12 +68,16 @@ export default function NetflixAppBar() {
           background: 'transparent',
           boxShadow: 'none',
           transition: '0.3s ease',
+          position: 'fixed',
+          zIndex: '10',
         })
       } else {
         setAppBarStyle({
           background: 'black',
           boxShadow: 'none',
           transition: '0.3s ease',
+          position: 'fixed',
+          zIndex: '10',
         })
       }
     }

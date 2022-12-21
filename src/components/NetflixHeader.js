@@ -8,7 +8,7 @@ import './header.css'
 
 export default function NetflixHeader() {
   const [data, setData] = useState()
-  const movie_id = 550
+  const movie_id = 76600
   const lang = 'fr-FR'
   const type = 'movie'
   useEffect(() => {
