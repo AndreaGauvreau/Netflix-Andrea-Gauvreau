@@ -27,8 +27,28 @@ export default function NetflixHeader() {
     >
       <h1>{data?.data.original_title}</h1>
       <div>
-        <Button variant="contained">Lecture</Button>
-        <Button variant="outlined">Ajouter à ma liste</Button>
+        <Button
+          variant="contained"
+          style={{
+            color: '#000000',
+            backgroundColor: '#ffffff',
+            fontWeight: '800',
+          }}
+        >
+          Lecture
+        </Button>
+        <Button
+          variant="contained"
+          style={{
+            color: '#ffffff',
+            border: ' 1px solid #ffffff00',
+            backgroundColor: '#00000090',
+            fontWeight: '800',
+            marginLeft: '20px',
+          }}
+        >
+          Ajouter à ma liste
+        </Button>
       </div>
 
       {console.log(data)}

@@ -8,6 +8,8 @@ import Typography from '@mui/material/Typography'
 import InputBase from '@mui/material/InputBase'
 import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
+import {useState} from 'react'
+import {useEffect} from 'react'
 
 const Search = styled('div')(({theme}) => ({
   position: 'relative',
@@ -52,9 +54,37 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 }))
 
 export default function NetflixAppBar() {
+  const [appBarStyle, setAppBarStyle] = useState({
+    background: 'transparent',
+    boxShadow: 'none',
+    transition: '0.3s ease',
+  })
+  useEffect(() => {
+    const onScroll = e => {
+      if (e.target.documentElement.scrollTop < 100) {
+        setAppBarStyle({
+          background: 'transparent',
+          boxShadow: 'none',
+          transition: '0.3s ease',
+        })
+      } else {
+        setAppBarStyle({
+          background: 'black',
+          boxShadow: 'none',
+          transition: '0.3s ease',
+        })
+      }
+    }
+    window.addEventListener('scroll', onScroll)
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [])
+
   return (
     <Box sx={{flexGrow: 1}}>
-      <AppBar position="static">
+      <AppBar position="static" style={appBarStyle}>
         <Toolbar>
           <img
             src="images/logo-andrea-netflix.png"
