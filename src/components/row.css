@@ -27,12 +27,26 @@
   flex-wrap: nowrap;
   gap: 20px;
   overflow: scroll;
-  padding: 20px;
+  padding: 50px 20px;
+  position: relative;
 }
 #row_data #maindivrow:hover {
   scale: 1.1;
   transition-delay: 0.2s;
   transition: 0.2s ease;
+}
+#imagenormal {
+  filter: blur(10px);
+  opacity: 0%;
+  transition: 0.2s;
+}
+#row_data #maindivrow:hover #imagenormal {
+  opacity: 100%;
+  transition: 0.2s;
+}
+#blurimage {
+  position: absolute;
+  left: 0;
 }
 
 .css-hyum1k-MuiToolbar-root {

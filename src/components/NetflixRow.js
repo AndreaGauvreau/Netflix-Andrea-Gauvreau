@@ -25,7 +25,7 @@ export default function NetflixRow({icone, type, wideImage, title, sort}) {
       .then(console.log(data))
       .catch(error => console.log(error))
   }, [id, type])
-  const wideImages = a => (wideImage ? a.backdrop_path : a.poster_path)
+  const wideImages = a => (wideImage ? a?.backdrop_path : a?.poster_path)
   const image = e => `${imagePath400}/${wideImages(e)}`
   const toolbox = wideImage ? 'toolbox' : 'delete-toolbox'
 
@@ -35,7 +35,12 @@ export default function NetflixRow({icone, type, wideImage, title, sort}) {
       <div id="row_data">
         {data?.data.results.map((e, index) => (
           <div className={icones} key={index} id="maindivrow">
-            <img src={image(e)} />
+            <img src={image(e)} alt={e.original_title} id="imagenormal" />
+            <img
+              id="blurimage"
+              src={image(e)}
+              alt={`${e.original_title}-blur`}
+            />
             <div className={toolbox}>
               <div className="topinfos">
                 {e.original_title}

@@ -1,7 +1,7 @@
 export const API_URL = process.env.REACT_APP_API_URL
 export const AUTH_URL = process.env.REACT_APP_AUTH_URL
 export const apiKey = '0e7401225b1d96603236c5067ad4d156'
-export const lang = 'fr-fr'
+export const lang = 'fr-FR'
 export const imagePath = 'https://image.tmdb.org/t/p'
 export const imagePathOriginal = `${imagePath}/original`
 export const imagePath400 = `${imagePath}/w400`

@@ -1,20 +1,15 @@
 import React from 'react'
 import NetflixRow from './NetflixRow'
-import {TYPE_TV, TYPE_MOVIE} from '../config'
+import {TYPE_MOVIE} from '../config'
 import './row.css'
 import NetflixAppBar from './NetflixAppBar'
 import NetflixHeader from './NetflixHeader'
-import {useState} from 'react'
-import {useEffect} from 'react'
-import {ResetTvRounded, WindowSharp} from '@mui/icons-material'
-import {HeaderSkeleton} from './skeletons/HeaderSkeleton'
 
 export default function NetflixApp() {
   return (
     <div>
       <NetflixAppBar />
       <NetflixHeader />
-      <HeaderSkeleton />
       <div id="first_row">
         <NetflixRow
           icone={false}

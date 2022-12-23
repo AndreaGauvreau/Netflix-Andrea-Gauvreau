@@ -8,7 +8,8 @@ const styles = {
     backgroundPosition: 'center center',
     color: 'white',
     objectFit: 'contain',
-    height: '448px',
+    height: '60vh',
+    paddingTop: '200px',
   },
 }
 
@@ -19,7 +20,6 @@ export const HeaderSkeleton = () => {
         <h1 className="banner__title">
           <Skeleton
             animation="wave"
-            width={210}
             sx={{bgcolor: 'grey.900'}}
             width={'640px'}
           />
