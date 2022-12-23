@@ -1,3 +1,4 @@
+import {StyledEngineProvider} from '@mui/material'
 import axios from 'axios'
 import React, {useState} from 'react'
 import {useEffect} from 'react'
@@ -22,6 +23,22 @@ const initialState = {
   data: null,
   error: null,
   status: 'idle',
+}
+
+export const useFetchMovies = (type, sort) => {
+  const [state, dispatch] = useReducer(reducer, initialState)
+  const {data, error, status} = state
+
+  useEffect(() => {
+    dispatch({type: 'fetching'})
+    axios
+      .get(
+        `https://api.themoviedb.org/3/${type}/${sort}?api_key=${apiKey}&language=${lang}&page=1`,
+      )
+      .then(data => dispatch({type: 'done', payload: data}))
+      .catch(error => dispatch({type: 'fail', error}))
+  }, [type, sort])
+  return {data, error, status}
 }
 
 export const useMovie = (movieId = 71446, types = 'movie') => {

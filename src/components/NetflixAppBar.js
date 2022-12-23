@@ -3,13 +3,12 @@ import {styled, alpha} from '@mui/material/styles'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
-import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import InputBase from '@mui/material/InputBase'
-import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
 import {useState} from 'react'
 import {useEffect} from 'react'
+import {Link} from 'react-router-dom'
 
 const Search = styled('div')(({theme}) => ({
   position: 'relative',
@@ -60,6 +59,7 @@ export default function NetflixAppBar() {
     transition: '0.3s ease',
     position: 'fixed',
     zIndex: '10',
+    textDecoration: 'none',
   })
   useEffect(() => {
     const onScroll = e => {
@@ -70,6 +70,7 @@ export default function NetflixAppBar() {
           transition: '0.3s ease',
           position: 'fixed',
           zIndex: '10',
+          textDecoration: 'none',
         })
       } else {
         setAppBarStyle({
@@ -78,6 +79,7 @@ export default function NetflixAppBar() {
           transition: '0.3s ease',
           position: 'fixed',
           zIndex: '10',
+          textDecoration: 'none',
         })
       }
     }
@@ -97,6 +99,10 @@ export default function NetflixAppBar() {
             alt="logo-netflix-andrea"
             height={'100px'}
           />
+          <Link to="/movies">Films</Link>
+          <Link to="/series">Séries</Link>
+          <Link to="/news">Nouveautés</Link>
+          <Link to="/movies">Ma liste</Link>
           <Typography
             variant="h6"
             noWrap

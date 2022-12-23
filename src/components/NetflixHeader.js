@@ -8,8 +8,7 @@ import {useMovie, useRandomId} from '../utils/useMovie'
 import './header.css'
 import {HeaderSkeleton} from './skeletons/HeaderSkeleton'
 
-export default function NetflixHeader({movie}) {
-  const types = 'movie'
+export default function NetflixHeader({movie, types}) {
   const myRandomId = useRandomId(types)
   const {data, error, status} = useMovie(myRandomId, types)
   const image = `${imagePathOriginal}/${data?.data.backdrop_path}`
