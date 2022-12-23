@@ -27,16 +27,19 @@
   flex-wrap: nowrap;
   gap: 20px;
   overflow: scroll;
-  padding: 50px 20px;
+  padding: 100px 20px;
   position: relative;
+  margin-top: -60px;
+  cursor: pointer;
 }
 #row_data #maindivrow:hover {
-  scale: 1.1;
+  scale: 1.2;
   transition-delay: 0.2s;
   transition: 0.2s ease;
+  z-index: 5;
 }
 #imagenormal {
-  filter: blur(10px);
+  filter: blur(20px);
   opacity: 0%;
   transition: 0.2s;
 }
@@ -47,6 +50,9 @@
 #blurimage {
   position: absolute;
   left: 0;
+}
+#row_data {
+  margin-bottom: -50px;
 }
 
 .css-hyum1k-MuiToolbar-root {
@@ -85,18 +91,25 @@ img {
 }
 
 .icons_set button {
-  width: 40px;
-  padding: 10px;
+  width: 17px;
+  padding: 15px;
   background-color: #ffffff20;
   border-radius: 50%;
   transition: 0.2s ease;
-  width: 50px;
-  height: 50px;
+  font-size: 10px;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
 }
 
 .icons_set button:hover {
   background-color: #ffffff50;
   transition: 0.2s ease;
+}
+
+.icons_set svg {
+  width: 17px;
+  cursor: pointer;
 }
 .toolbox {
   padding: 10px;
@@ -114,6 +127,7 @@ img {
 .topinfos svg {
   color: rgb(255, 200, 0);
   height: 20px;
+  cursor: pointer;
 }
 .topinfos,
 .topinfos span {
@@ -122,11 +136,48 @@ img {
   justify-content: space-between;
   align-items: center;
 }
-
+.topinfos {
+  position: absolute;
+  bottom: 50px;
+  width: 95%;
+}
 .delete-toolbox {
   display: none !important;
 }
 
 #first_row {
   margin-top: -100px;
+}
+
+.liked {
+  color: red;
+}
+
+#loveButton {
+  color: red;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%;
+  animation: pulse-red 10s infinite;
+}
+
+@keyframes pulse-red {
+  0% {
+    transform: scale(0.55);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+  }
+
+  10% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
+  }
+  90% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
+  }
+  100% {
+    transform: scale(0.55);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
+  }
 }

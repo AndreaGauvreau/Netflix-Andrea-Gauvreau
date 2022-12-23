@@ -12,7 +12,7 @@ export default function NetflixApp() {
       <NetflixHeader />
       <div id="first_row">
         <NetflixRow
-          icone={false}
+          icone={true}
           type={TYPE_MOVIE}
           wideImage={false}
           title={'Les plus populaires'}
@@ -20,7 +20,7 @@ export default function NetflixApp() {
         />
       </div>
       <NetflixRow
-        icone={true}
+        icone={false}
         type={TYPE_MOVIE}
         wideImage={true}
         title={'Films Les mieux notés'}

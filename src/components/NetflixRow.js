@@ -10,6 +10,7 @@ import AddIcon from '@mui/icons-material/Add'
 import ThumbUpIcon from '@mui/icons-material/ThumbUp'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import StarIcon from '@mui/icons-material/Star'
+import FavoriteIcon from '@mui/icons-material/Favorite'
 
 export default function NetflixRow({icone, type, wideImage, title, sort}) {
   const icones = icone ? 'add_icone' : ''
@@ -28,6 +29,16 @@ export default function NetflixRow({icone, type, wideImage, title, sort}) {
   const wideImages = a => (wideImage ? a?.backdrop_path : a?.poster_path)
   const image = e => `${imagePath400}/${wideImages(e)}`
   const toolbox = wideImage ? 'toolbox' : 'delete-toolbox'
+  const [addDatalike, setAddDataLike] = useState([])
+  const onClickLike = e => {
+    addDatalike.includes(e)
+      ? setAddDataLike(current =>
+          current.filter(addDatalike => {
+            return addDatalike !== e
+          }),
+        )
+      : setAddDataLike([...addDatalike, e])
+  }
 
   return (
     <div>
@@ -41,6 +52,8 @@ export default function NetflixRow({icone, type, wideImage, title, sort}) {
               src={image(e)}
               alt={`${e.original_title}-blur`}
             />
+            {addDatalike.includes(e.id) ? <FavoriteIcon id="loveButton" /> : ''}
+            {console.log(addDatalike)}
             <div className={toolbox}>
               <div className="topinfos">
                 {e.original_title}
@@ -56,7 +69,10 @@ export default function NetflixRow({icone, type, wideImage, title, sort}) {
                   <AddIcon />
                 </IconButton>
                 <IconButton>
-                  <ThumbUpIcon />
+                  <ThumbUpIcon
+                    onClick={() => onClickLike(e?.id)}
+                    className={addDatalike.includes(e.id) ? 'liked' : ''}
+                  />
                 </IconButton>
                 <IconButton>
                   <KeyboardArrowDownIcon />
